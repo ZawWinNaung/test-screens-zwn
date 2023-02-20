@@ -1,17 +1,19 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import {
-  Image,
-  Modal,
-  Pressable,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
+import { Button, Image, Modal, Pressable, Text, View } from "react-native";
 import styles from "../styles/styles";
 import { useForm, Controller } from "react-hook-form";
 import CustomInput from "../components/CustomInput";
+
+const ModalPoup = (props) => {
+  return (
+    <Modal transparent visible={props.visible} animationType={"slide"}>
+      <View style={styles.modalBackground}>
+        <View style={[styles.modalContainer]}>{props.children}</View>
+      </View>
+    </Modal>
+  );
+};
 
 export default function Register({ navigation }) {
   const {
@@ -20,33 +22,36 @@ export default function Register({ navigation }) {
     formState: { errors },
   } = useForm();
 
-  const onSignInPressed = (data) => {
-    // setVisible(true);
-    navigation.navigate("Login");
-  };
-
   const [visible, setVisible] = useState(false);
 
-  const ModalPoup = (visible, children) => {
-    const [showModal, setShowModal] = useState(visible);
-    return (
-      <Modal transparent visible={true}>
-        <View style={styles.modalBackground}>
-          <View style={styles.modalContainer}>{children}</View>
-        </View>
-      </Modal>
-    );
+  const onSignInPressed = (data) => {
+    setVisible(true);
   };
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      {/* <ModalPoup visible={visible}>
+      <ModalPoup visible={visible}>
         <View style={{ alignItems: "center" }}>
-          <Image source={require("../assets/images/checkmark.png")} />
-          <Text>Successfully Created.</Text>
+          <Image
+            style={{ width: 60, height: 60 }}
+            source={require("../assets/images/checkmark.png")}
+          />
+          <Text style={{ marginVertical: 16 }}>Successfully Created.</Text>
+          <View style={styles.buttonView}>
+            <Pressable
+              style={styles.loginButton}
+              android_ripple={{ color: "#368ee6", borderless: true }}
+              onPress={() => {
+                setVisible(false);
+                navigation.navigate("Login");
+              }}
+            >
+              <Text style={styles.buttonText}>Ok</Text>
+            </Pressable>
+          </View>
         </View>
-      </ModalPoup> */}
+      </ModalPoup>
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         <Image
           style={styles.image}
