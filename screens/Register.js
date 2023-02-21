@@ -4,16 +4,7 @@ import { Button, Image, Modal, Pressable, Text, View } from "react-native";
 import styles from "../styles/styles";
 import { useForm, Controller } from "react-hook-form";
 import CustomInput from "../components/CustomInput";
-
-const ModalPoup = (props) => {
-  return (
-    <Modal transparent visible={props.visible} animationType={"slide"}>
-      <View style={styles.modalBackground}>
-        <View style={[styles.modalContainer]}>{props.children}</View>
-      </View>
-    </Modal>
-  );
-};
+import ModalPopUp from "../components/ModalPopUp";
 
 export default function Register({ navigation }) {
   const {
@@ -31,7 +22,7 @@ export default function Register({ navigation }) {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <ModalPoup visible={visible}>
+      <ModalPopUp visible={visible}>
         <View style={{ alignItems: "center" }}>
           <Image
             style={{ width: 60, height: 60 }}
@@ -51,7 +42,7 @@ export default function Register({ navigation }) {
             </Pressable>
           </View>
         </View>
-      </ModalPoup>
+      </ModalPopUp>
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         <Image
           style={styles.image}
