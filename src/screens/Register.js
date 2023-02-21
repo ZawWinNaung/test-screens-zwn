@@ -1,10 +1,11 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { Button, Image, Modal, Pressable, Text, View } from "react-native";
+import { Image, Pressable, Text, View } from "react-native";
 import styles from "../styles/styles";
 import { useForm, Controller } from "react-hook-form";
 import CustomInput from "../components/CustomInput";
 import ModalPopUp from "../components/ModalPopUp";
+import { useSelector } from "react-redux";
 
 export default function Register({ navigation }) {
   const {
@@ -18,6 +19,8 @@ export default function Register({ navigation }) {
   const onSignInPressed = (data) => {
     setVisible(true);
   };
+
+  const userName = useSelector((state) => state.auth.username);
 
   return (
     <View style={styles.container}>

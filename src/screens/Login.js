@@ -1,13 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import {
-  Image,
-  Pressable,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
+import { Image, Pressable, Text, View } from "react-native";
 import CheckBox from "@react-native-community/checkbox";
 import styles from "../styles/styles";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,7 +8,7 @@ import { useForm } from "react-hook-form";
 import CustomInput from "../components/CustomInput";
 import { addName } from "../redux/counterSlice";
 
-export default function Login() {
+export default function Login({ navigation }) {
   const {
     control,
     handleSubmit,
@@ -28,6 +21,7 @@ export default function Login() {
     if (data.phone != userName) {
       dispatch(addName(data.phone));
     }
+    navigation.navigate("Drawer");
   };
 
   return (
