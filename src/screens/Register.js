@@ -26,7 +26,7 @@ export default function Register({ navigation }) {
         <View style={{ alignItems: "center" }}>
           <Image
             style={{ width: 60, height: 60 }}
-            source={require("../assets/images/checkmark.png")}
+            source={require("../../assets/images/checkmark.png")}
           />
           <Text style={{ marginVertical: 16 }}>Successfully Created.</Text>
           <View style={styles.buttonView}>
@@ -46,7 +46,7 @@ export default function Register({ navigation }) {
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         <Image
           style={styles.image}
-          source={require("../assets/images/uk.png")}
+          source={require("../../assets/images/uk.png")}
         />
         <Text>Language</Text>
       </View>
