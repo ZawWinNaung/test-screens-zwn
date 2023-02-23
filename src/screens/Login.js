@@ -21,7 +21,7 @@ export default function Login({ navigation }) {
     if (data.phone != userName) {
       dispatch(addName(data.phone));
     }
-    navigation.navigate("Drawer");
+    navigation.navigate("BottomNav");
   };
 
   return (
