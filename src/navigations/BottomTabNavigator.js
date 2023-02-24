@@ -5,6 +5,7 @@ import { DrawerNavigator } from "./DrawerNavigator";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { Profile } from "../screens/Profile";
 import { Home } from "../screens/Home";
+import CustomTabBar from "./CustomTabBar";
 
 const Tab = createBottomTabNavigator();
 
@@ -12,6 +13,16 @@ export const BottomTabNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
+        tabBarStyle: {
+          position: "absolute",
+          bottom: 25,
+          left: 20,
+          right: 20,
+          elevation: 4,
+          backgroundColor: "#434343",
+          borderRadius: 20,
+          height: 70,
+        },
         headerShown: false,
         tabBarShowLabel: false,
         tabBarIcon: (props) => {

@@ -26,7 +26,6 @@ export default function Login({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" />
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         <Image
           style={styles.image}

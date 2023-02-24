@@ -6,31 +6,43 @@ import Register from "./src/screens/Register";
 import { Provider } from "react-redux";
 import { store } from "./src/redux/store";
 import { BottomTabNavigator } from "./src/navigations/BottomTabNavigator";
+import { StatusBar } from "expo-status-bar";
 
 const Stack = createNativeStackNavigator();
+
+const AuthStack = () => {
+  return <Stack.Navigator></Stack.Navigator>;
+};
+
+const RootNavigation = () => {
+  return (
+    <NavigationContainer>
+      <StatusBar style="auto" />
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Register"
+          component={Register}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="BottomNav"
+          component={BottomTabNavigator}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
 
 export default function App() {
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Register"
-            component={Register}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Login"
-            component={Login}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="BottomNav"
-            component={BottomTabNavigator}
-            options={{ headerShown: false }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <RootNavigation />
     </Provider>
   );
 }

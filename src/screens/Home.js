@@ -10,7 +10,6 @@ export const Home = () => {
 
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" />
       <View>
         <Text>Welcome {userName}</Text>
       </View>
