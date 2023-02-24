@@ -24,7 +24,6 @@ export default function Register({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" />
       <ModalPopUp visible={visible}>
         <View style={{ alignItems: "center" }}>
           <Image

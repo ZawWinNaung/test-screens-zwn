@@ -2,11 +2,11 @@ import { StatusBar } from "expo-status-bar";
 import { Text, View } from "react-native";
 import styles from "../styles/styles";
 
-export const Search = () => {
+export const Settings = () => {
   return (
     <View style={styles.container}>
       <View>
-        <Text>Search</Text>
+        <Text>Settings</Text>
       </View>
     </View>
   );
