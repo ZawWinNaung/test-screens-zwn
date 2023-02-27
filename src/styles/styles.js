@@ -1,12 +1,12 @@
 import { StyleSheet } from "react-native";
+import { colors } from "./colors";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    marginTop: 16,
     alignItems: "flex-start",
-    backgroundColor: "white",
+    backgroundColor: colors.appBackgroundColor,
   },
   image: {
     width: 30,
@@ -16,9 +16,9 @@ const styles = StyleSheet.create({
   },
   textInput: {
     borderWidth: 1,
-    borderColor: "#888888",
-    backgroundColor: "white",
-    color: "#120438",
+    borderColor: "#1d1d1d",
+    backgroundColor: "#434343",
+    color: "white",
     borderRadius: 8,
     width: "100%",
     marginRight: 8,
@@ -29,11 +29,13 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     fontSize: 28,
     fontWeight: "bold",
+    color: colors.textColor,
   },
   title2: {
     marginVertical: 16,
     fontSize: 20,
     fontWeight: "bold",
+    color: colors.textColor,
   },
   termsContainer: {
     marginVertical: 16,
@@ -49,15 +51,14 @@ const styles = StyleSheet.create({
   },
   loginButton: {
     height: 50,
-    backgroundColor: "#0053a7",
+    backgroundColor: colors.primaryColor,
     padding: 10,
     alignItems: "center",
     justifyContent: "center",
   },
   buttonText: {
-    color: "white",
+    color: colors.textColor,
     fontSize: 16,
-    textTransform: "uppercase",
     fontFamily: "sans-serif-light",
   },
   errorText: {
@@ -66,13 +67,13 @@ const styles = StyleSheet.create({
   },
   modalBackground: {
     flex: 1,
-    backgroundColor: "rgba(0,0,0,0.5)",
+    backgroundColor: "rgba(255,255,255,0.3)",
     justifyContent: "center",
     alignItems: "center",
   },
   modalContainer: {
     width: "80%",
-    backgroundColor: "white",
+    backgroundColor: colors.appBackgroundColor,
     paddingHorizontal: 20,
     paddingVertical: 30,
     borderRadius: 20,

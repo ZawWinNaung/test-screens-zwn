@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { Image, Pressable, Text, View } from "react-native";
 import styles from "../styles/styles";
@@ -6,6 +5,7 @@ import { useForm, Controller } from "react-hook-form";
 import CustomInput from "../components/CustomInput";
 import ModalPopUp from "../components/ModalPopUp";
 import { useSelector } from "react-redux";
+import { colors } from "../styles/colors.js";
 
 export default function Register({ navigation }) {
   const {
@@ -30,11 +30,16 @@ export default function Register({ navigation }) {
             style={{ width: 60, height: 60 }}
             source={require("../../assets/images/checkmark.png")}
           />
-          <Text style={{ marginVertical: 16 }}>Successfully Created.</Text>
+          <Text style={{ marginVertical: 16, color: colors.textColor }}>
+            Successfully Created.
+          </Text>
           <View style={styles.buttonView}>
             <Pressable
               style={styles.loginButton}
-              android_ripple={{ color: "#368ee6", borderless: true }}
+              android_ripple={{
+                color: colors.buttonRippleColor,
+                borderless: true,
+              }}
               onPress={() => {
                 setVisible(false);
                 navigation.navigate("Login");
@@ -50,7 +55,7 @@ export default function Register({ navigation }) {
           style={styles.image}
           source={require("../../assets/images/uk.png")}
         />
-        <Text>Language</Text>
+        <Text style={{ color: colors.textColor }}>Language</Text>
       </View>
       <Text style={styles.title1}>Mobile Payment</Text>
       <Text style={styles.title2}>Register</Text>
@@ -70,18 +75,20 @@ export default function Register({ navigation }) {
         name="passcode"
         placeholder="Passcode"
         control={control}
+        secureTextEntry={true}
         rules={{ required: "Passcode is required!" }}
       />
       <CustomInput
         name="confirmPasscode"
         placeholder="Confirm Passcode"
         control={control}
+        secureTextEntry={true}
         rules={{ required: "Confirm Passcode is required!" }}
       />
       <View style={styles.buttonView}>
         <Pressable
           style={styles.loginButton}
-          android_ripple={{ color: "#368ee6", borderless: true }}
+          android_ripple={{ color: colors.buttonRippleColor, borderless: true }}
           onPress={handleSubmit(onSignInPressed)}
         >
           <Text style={styles.buttonText}>Sign up</Text>
@@ -93,7 +100,9 @@ export default function Register({ navigation }) {
             navigation.navigate("Login");
           }}
         >
-          <Text style={{ color: "#0053a7", fontSize: 20 }}>I have account</Text>
+          <Text style={{ color: colors.accentColor, fontSize: 20 }}>
+            I have account
+          </Text>
         </Pressable>
       </View>
     </View>

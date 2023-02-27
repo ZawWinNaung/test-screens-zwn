@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import CustomInput from "../components/CustomInput";
 import { addName } from "../redux/counterSlice";
+import { colors } from "../styles/colors";
 
 export default function Login({ navigation }) {
   const {
@@ -21,7 +22,7 @@ export default function Login({ navigation }) {
     if (data.phone != userName) {
       dispatch(addName(data.phone));
     }
-    navigation.navigate("BottomNav");
+    navigation.navigate("AppDrawerStack");
   };
 
   return (
@@ -31,7 +32,7 @@ export default function Login({ navigation }) {
           style={styles.image}
           source={require("../../assets/images/uk.png")}
         />
-        <Text>Language</Text>
+        <Text style={{ color: colors.textColor }}>Language</Text>
       </View>
       <Text style={styles.title1}>Mobile Payment</Text>
       <Text style={styles.title2}>Login or Register</Text>
@@ -46,16 +47,18 @@ export default function Login({ navigation }) {
           disabled={false}
           value={toggleCheckBox}
           onValueChange={(newValue) => setToggleCheckBox(newValue)}
-          tintColors={{ true: "#0053a7", false: "black" }}
+          tintColors={{ true: colors.primaryColor, false: "grey" }}
         />
         <Text>
-          <Text style={{ color: "#0053a7" }}>I accept Terms of Service</Text>
+          <Text style={{ color: colors.accentColor }}>
+            I accept Terms of Service
+          </Text>
         </Text>
       </View>
       <View style={styles.buttonView}>
         <Pressable
           style={styles.loginButton}
-          android_ripple={{ color: "#368ee6", borderless: true }}
+          android_ripple={{ color: colors.buttonRippleColor, borderless: true }}
           onPress={handleSubmit(submitForm)}
         >
           <Text style={styles.buttonText}>Next</Text>

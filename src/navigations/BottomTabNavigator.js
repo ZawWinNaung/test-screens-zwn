@@ -1,11 +1,10 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Search } from "../screens/Search";
-import { DrawerNavigator } from "./DrawerNavigator";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { Profile } from "../screens/Profile";
 import { Home } from "../screens/Home";
-import CustomTabBar from "./CustomTabBar";
+import { colors } from "../styles/colors";
 
 const Tab = createBottomTabNavigator();
 
@@ -15,14 +14,12 @@ export const BottomTabNavigator = () => {
       screenOptions={({ route }) => ({
         tabBarStyle: {
           position: "absolute",
-          bottom: 25,
-          left: 20,
-          right: 20,
-          elevation: 4,
-          backgroundColor: "#434343",
-          borderRadius: 20,
-          height: 70,
+          elevation: 0,
+          backgroundColor: colors.backgroundColor,
+          borderTopWidth: 0,
+          borderBottomWidth: 0,
         },
+        tabBarHideOnKeyboard: true,
         headerShown: false,
         tabBarShowLabel: false,
         tabBarIcon: (props) => {
@@ -45,13 +42,13 @@ export const BottomTabNavigator = () => {
             <Ionicons name={iconName} size={props.size} color={props.color} />
           );
         },
-        tabBarActiveTintColor: "#129dee",
+        tabBarActiveTintColor: colors.accentColor,
         tabBarInactiveTintColor: "gray",
       })}
     >
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Search" component={Search} />
-      <Tab.Screen name="Profile" component={DrawerNavigator} />
+      <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
   );
 };
