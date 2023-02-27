@@ -7,6 +7,9 @@ import { Provider } from "react-redux";
 import { store } from "./src/redux/store";
 import { BottomTabNavigator } from "./src/navigations/BottomTabNavigator";
 import { StatusBar } from "expo-status-bar";
+import { SafeAreaView } from "react-native-safe-area-context";
+import * as NavigationBar from "expo-navigation-bar";
+import { DrawerNavigator } from "./src/navigations/DrawerNavigator";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,28 +17,32 @@ const AuthStack = () => {
   return <Stack.Navigator></Stack.Navigator>;
 };
 
+NavigationBar.setBackgroundColorAsync("#292929");
+
 const RootNavigation = () => {
   return (
-    <NavigationContainer>
-      <StatusBar style="auto" />
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Register"
-          component={Register}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="BottomNav"
-          component={BottomTabNavigator}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#292929" }}>
+      <NavigationContainer>
+        <StatusBar style="light" />
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Register"
+            component={Register}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Login"
+            component={Login}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="AppDrawerStack"
+            component={DrawerNavigator}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaView>
   );
 };
 

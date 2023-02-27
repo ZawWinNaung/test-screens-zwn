@@ -19,7 +19,7 @@ const CustomInput = ({
             {...props.field}
             style={styles.textInput}
             placeholder={placeholder}
-            placeholderTextColor={"#888888"}
+            placeholderTextColor={"#a1a1a1"}
             secureTextEntry={secureTextEntry}
             onChangeText={(text) => props.field.onChange(text)}
           />
