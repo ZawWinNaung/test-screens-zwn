@@ -10,8 +10,14 @@ export const Search = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const response = await axios.get("https://randomuser.me/api/?results=20");
-      console.log("response", response.data);
+      try {
+        const response = await axios.get(
+          "https://randomuser.me/api/?results=20"
+        );
+        console.log("response", response.data.results);
+      } catch (error) {
+        console.log("error", error);
+      }
     };
     getData();
   }, []);
