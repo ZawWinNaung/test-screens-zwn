@@ -5,18 +5,58 @@ import {
   DrawerItemList,
   DrawerToggleButton,
 } from "@react-navigation/drawer";
-import React from "react";
+import React, { useState } from "react";
+import { Alert, Pressable, Text, View } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { useDispatch } from "react-redux";
+import ModalPopUp from "../components/ModalPopUp";
+import { MyButton } from "../components/MyButton";
+import { setSignOut } from "../redux/authSlice";
 import { Settings } from "../screens/Settings";
 import { colors } from "../styles/colors";
+import styles from "../styles/styles";
 import { BottomTabNavigator } from "./BottomTabNavigator";
 
 const CustomDrawerContent = (props) => {
+  const [visible, setVisible] = useState(false);
+  const dispatch = useDispatch();
   return (
     <DrawerContentScrollView
       {...props}
       contentContainerStyle={{ backgroundColor: colors.appBackgroundColor }}
     >
+      <ModalPopUp visible={visible}>
+        <View style={{ alignItems: "center" }}>
+          <Ionicons name="log-out-outline" size={60} color={"white"} />
+          <Text style={{ marginVertical: 16, color: colors.textColor }}>
+            Are you sure want to log out?
+          </Text>
+          <View
+            style={{
+              alignSelf: "stretch",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-around",
+            }}
+          >
+            <MyButton
+              width="30%"
+              text={"Ok"}
+              onPress={() => {
+                setVisible(false);
+                dispatch(setSignOut());
+              }}
+            />
+            <MyButton
+              width="30%"
+              text={"Cancel"}
+              onPress={() => {
+                setVisible(false);
+              }}
+            />
+          </View>
+        </View>
+      </ModalPopUp>
       {/* <View
         style={{
           flexDirection: "row",
@@ -39,7 +79,7 @@ const CustomDrawerContent = (props) => {
             color={props.color}
           />
         )}
-        onPress={() => alert("Link to help")}
+        onPress={() => setVisible(true)}
       />
     </DrawerContentScrollView>
   );

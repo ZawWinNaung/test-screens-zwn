@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { Image, Pressable, Text, View } from "react-native";
 import CheckBox from "@react-native-community/checkbox";
@@ -6,7 +5,7 @@ import styles from "../styles/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import CustomInput from "../components/CustomInput";
-import { addName } from "../redux/counterSlice";
+import { selectUserName, setSignIn } from "../redux/authSlice";
 import { colors } from "../styles/colors";
 
 export default function Login({ navigation }) {
@@ -17,12 +16,14 @@ export default function Login({ navigation }) {
   } = useForm();
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
   const dispatch = useDispatch();
-  const userName = useSelector((state) => state.auth.username);
+  const userName = useSelector(selectUserName);
   const submitForm = (data) => {
-    if (data.phone != userName) {
-      dispatch(addName(data.phone));
-    }
-    navigation.navigate("AppDrawerStack");
+    dispatch(
+      setSignIn({
+        isLoggedIn: true,
+        userName: data.phone,
+      })
+    );
   };
 
   return (
@@ -35,7 +36,7 @@ export default function Login({ navigation }) {
         <Text style={{ color: colors.textColor }}>Language</Text>
       </View>
       <Text style={styles.title1}>Mobile Payment</Text>
-      <Text style={styles.title2}>Login or Register</Text>
+      <Text style={styles.title2}>Login</Text>
       <CustomInput
         name="phone"
         placeholder="09"
